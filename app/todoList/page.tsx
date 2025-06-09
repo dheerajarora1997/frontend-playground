@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 import "./style.scss";
 
 export default function TodoListPage() {
-  const storageItem = localStorage.getItem("toDolist");
-  const storageList = storageItem ? JSON.parse(storageItem) : null;
-  const [list, setList] = useState<string[]>(storageList || []);
+  const [list, setList] = useState<string[]>([]);
   const addNew = () => {
     const sample: string[] = [...list];
     sample.push(" ");
@@ -22,15 +20,15 @@ export default function TodoListPage() {
     setList(sample);
   };
   useEffect(() => {
+    const storageItem = localStorage.getItem("toDolist");
+    if (storageItem) {
+      setList(JSON.parse(storageItem));
+    }
+  }, []);
+  useEffect(() => {
     localStorage.setItem("toDolist", JSON.stringify(list));
   }, [list]);
 
-  useEffect(() => {
-    const stored = localStorage.getItem("toDolist");
-    if (stored) {
-      setList(JSON.parse(stored));
-    }
-  }, []);
   return (
     <div className="todo-list">
       <h1>To Do List</h1>
