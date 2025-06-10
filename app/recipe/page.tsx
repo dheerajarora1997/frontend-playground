@@ -54,7 +54,7 @@ export default function Recipe() {
               <h1 className="display-6 fw-bold mt-4 mb-2">Explore Recipe</h1>
               <p className="text-center">
                 Discover a world of culinary delights with our extensive recipe
-                collection. Whether you're looking for quick meals, healthy
+                collection. Whether you&apos;re looking for quick meals, healthy
                 options, or gourmet dishes, we have something for every taste.
                 <br />
                 Start your cooking adventure today!
