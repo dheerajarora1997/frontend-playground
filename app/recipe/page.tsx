@@ -29,6 +29,9 @@ export default function Recipe() {
             query ? `&query=${encodeURIComponent(query)}` : ""
           }`
         );
+        if ([401, 402].includes(response.status)) {
+          alert("Daily points limit of 150 has been reached.");
+        }
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
         if (query) {

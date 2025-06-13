@@ -57,6 +57,9 @@ export default function SingleRecipe() {
         const res = await fetch(
           `${apiUrl}${id}/information?apiKey=${apiKey}&includeNutrition=false`
         );
+        if ([401, 402].includes(res.status)) {
+          alert("Daily points limit of 150 has been reached.");
+        }
         if (!res.ok) throw new Error("Network response was not ok");
         const data = await res.json();
         setSingleRecipe(data);
