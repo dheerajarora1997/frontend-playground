@@ -11,8 +11,10 @@ interface Recipe {
 }
 
 export default function Recipe() {
-  const apiKey = "bfc80484d88a4ca8a64482e062989d52";
-  const apiUrl = "https://api.spoonacular.com/recipes/";
+  const apiKey = process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY || "";
+  const apiUrl =
+    process.env.NEXT_PUBLIC_SPOONACULAR_API_URL ||
+    "https://api.spoonacular.com/recipes/";
   const [recipeList, setRecipeList] = useState<Recipe[]>([]);
   const [recipeSearchList, setRecipeSearchList] = useState<Recipe[]>([]);
   const [searchValue, setSearchValue] = useState("");
